@@ -23,7 +23,7 @@ export default function App() {
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
-        <SearchBox setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
+        <SearchBox setSearchQuery={setSearchQuery} />
         {isSuccess && data.totalPages > 1 && (<Pagination totalPages={data.totalPages} currentPage={page} onPageChange={setPage} />)}
         <button onClick={() => setIsOpenModal(true)} className={css.button}>Create note +</button>
       </header>
