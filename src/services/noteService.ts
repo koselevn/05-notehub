@@ -6,7 +6,7 @@ export async function fetchNotes(search: string, page: number) {
     const options = {
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
+        Authorization: `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`
       },
       params: {
           search: search,
@@ -25,7 +25,7 @@ export async function createNote(objet: FormValues) {
   const options = {
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
+      Authorization: `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`
     },
   }
 
@@ -39,7 +39,7 @@ export async function deleteNote(id: string) {
   const options = {
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`
+      Authorization: `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`
     },
   }
 
