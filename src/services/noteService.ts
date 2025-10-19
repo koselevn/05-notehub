@@ -1,7 +1,12 @@
 import axios from "axios";
-import type { FormValues } from "../types/note";
+import type { FormValues, Note } from "../types/note";
 
-export async function fetchNotes(search: string, page: number) {
+interface NoteResponse {
+  notes: Note[]
+  totalPages: number
+}
+
+export async function fetchNotes(search: string, page: number): Promise<NoteResponse> {
     const url = 'https://notehub-public.goit.study/api/notes'
     const options = {
       headers: {
@@ -15,12 +20,12 @@ export async function fetchNotes(search: string, page: number) {
       }
     }
 
-    const response = await axios.get(url, options)
+  const response = await axios.get<NoteResponse>(url, options)
 
-    return response.data
+  return response.data
 }
 
-export async function createNote(objet: FormValues) {
+export async function createNote(objet: FormValues): Promise<Note> {
   const url = 'https://notehub-public.goit.study/api/notes'
   const options = {
     headers: {
@@ -29,12 +34,12 @@ export async function createNote(objet: FormValues) {
     },
   }
 
-  const response = await axios.post(url, objet, options)
+  const response = await axios.post<Note>(url, objet, options)
 
-  return response
+  return response.data
 }
 
-export async function deleteNote(id: string) {
+export async function deleteNote(id: string): Promise<Note> {
   const url = `https://notehub-public.goit.study/api/notes/${id}`
   const options = {
     headers: {
@@ -43,7 +48,7 @@ export async function deleteNote(id: string) {
     },
   }
 
-  const response = await axios.delete(url, options)
+  const response = await axios.delete<Note>(url, options)
 
-  return response
+  return response.data
 }

@@ -11,7 +11,7 @@ interface NoteFormProps {
 
 const Schema = Yup.object().shape({
   title: Yup.string()
-    .min(2, "Name must be at least 3 characters")
+    .min(3, "Name must be at least 3 characters")
     .max(50, "Title is too long. Max 50")
     .required("This required input"),
   content: Yup.string().max(500, "Content is too long. Max 500"),
